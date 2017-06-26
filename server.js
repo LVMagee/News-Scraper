@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var handleBars = require('express-handlebars')
 
  // Scrappers
  var request = require('request');

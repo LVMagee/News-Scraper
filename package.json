@@ -1,0 +1,29 @@
+{
+  "name": "news-scraper",
+  "version": "1.0.0",
+  "description": "pull news articles and comment on them",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LVMagee/News-Scraper.git"
+  },
+  "author": "lvmagee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LVMagee/News-Scraper/issues"
+  },
+  "homepage": "https://github.com/LVMagee/News-Scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.1",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.11.0",
+    "morgan": "^1.8.2",
+    "request": "^2.81.0"
+  }
+}
