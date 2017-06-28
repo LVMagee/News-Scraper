@@ -3,21 +3,26 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var handleBars = require('express-handlebars')
+// var exphbs = require("express-handlebars");
+
+ // Models
+ var Note = require('./models/Note.js');
+ var Article = require('./models/Article.js');
 
  // Scrappers
  var request = require('request');
  var cheerio = require('cheerio');
-
- // Models
- var Note = rquire('./models/Note.js');
- var Article = require('./models/Article.js');
 
  mongoose.Promise = Promise;
 
 // Initialize Express
 var app = express();
 
+ // Set Handlebars as the default templating engine.
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
+
+// Set up Morgan and body-parser
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
 	extended: false
@@ -41,9 +46,9 @@ db.once('open', function(){
 
 // Get request to scrape
 app.get('/scrape', function(req, res){
-	request('http://www.   .com/', function(error, response, html){
+	request('https://www.sciencedaily.com/news/top/science', function(error, response, html){
 		var $ = cheerio.load(html);
-		$('article h2').each(function(i, element){
+		$('h3.latest-head').each(function(i, element){
 
 			var result = {};
 
