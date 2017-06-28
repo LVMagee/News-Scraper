@@ -31,7 +31,15 @@ app.use(bodyParser.urlencoded({
 app.use(express.static('public'));
 
 // Database setups
-mongoose.connect('mongodb://localhost/newsScraper');
+var databaseUri = "mongodb://localhost/newsScraper";
+
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+	mongoose.connect(databaseUri);
+}
+// mongoose.connect('mongodb://localhost/newsScraper');
 var db = mongoose.connection;
 
 db.on('error', function(error){
