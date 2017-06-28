@@ -53,7 +53,7 @@ db.once('open', function(){
 // Routes
 
 // Get request to scrape
-app.get('/scrape', function(req, res){
+app.get('/', function(req, res){
 	request('https://www.sciencedaily.com/news/top/science', function(error, response, html){
 		var $ = cheerio.load(html);
 		$('h3.latest-head').each(function(i, element){
@@ -76,7 +76,7 @@ app.get('/scrape', function(req, res){
 			});
 		});
 	});
-	res.send('Scrape Complete');
+	res.sendFile('public/index.html');
 });
 
 // Get the articles scraped from db
